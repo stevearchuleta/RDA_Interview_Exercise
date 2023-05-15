@@ -5,6 +5,13 @@ C:.
 |   README.md
 |   
 +---data
+|       claims.csv
+|       reimbursements.csv
+|       
++---Deliverable Submission
++---Exercise Files
+|       JC-359684 RDA I-II Practical Exercise.docx
+|       
 +---models
 +---notebooks
 |   |   01_data_cleaning_and_preprocessing.ipynb
@@ -21,7 +28,12 @@ C:.
 |           05_model_evaluation-checkpoint.ipynb
 |           
 +---reports
+|   |   Summary Report.docx
+|   |   
 |   \---figures
 |           RADD_logo.jpg
 |           
++---scripts
+|       move_files.py
+|       
 \---src
