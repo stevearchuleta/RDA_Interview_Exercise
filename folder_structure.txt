@@ -1,0 +1,27 @@
+Folder PATH listing for volume WD_Black SN750 SSD 931GB
+Volume serial number is EE5C-C805
+C:.
+|   folder_structure.txt
+|   README.md
+|   
++---data
++---models
++---notebooks
+|   |   01_data_cleaning_and_preprocessing.ipynb
+|   |   02_exploratory_data_analysis.ipynb
+|   |   03_feature_engineering.ipynb
+|   |   04_model_building_and_tuning.ipynb
+|   |   05_model_evaluation.ipynb
+|   |   
+|   \---.ipynb_checkpoints
+|           01_data_cleaning_and_preprocessing-checkpoint.ipynb
+|           02_exploratory_data_analysis-checkpoint.ipynb
+|           03_feature_engineering-checkpoint.ipynb
+|           04_model_building_and_tuning-checkpoint.ipynb
+|           05_model_evaluation-checkpoint.ipynb
+|           
++---reports
+|   \---figures
+|           RADD_logo.jpg
+|           
+\---src
