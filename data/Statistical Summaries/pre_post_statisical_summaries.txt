@@ -1,0 +1,39 @@
+A) Claims Adjusted Amount (adj_amt):
+
+Pre-Policy Claims: The dataset contains 285,512 records with a mean adjusted amount of $312.40, a standard deviation of $932.12, and a range from 0.00 to 99,048.00.
+
+Post-Policy Claims: The dataset contains 42,168 records with a mean adjusted amount of $338.42, a standard deviation of $556.98, and a range from 0.01 to 62,093.00.
+
+The analysis of the adjusted amount for claims before and after the policy change shows some interesting insights. The mean adjusted amount slightly increased from $312.40 to $338.42 after the policy change, indicating a potential increase in the average reimbursement amount for theft claims. However, it is important to note that the standard deviation decreased from $932.12 to $556.98, suggesting a reduction in the variability of the adjusted amounts after the policy change.
+
+
+B) Reimbursement Benefit Amount (benefit_amount):
+
+Pre-Policy Reimbursements: The dataset contains 75,810 records with a mean benefit amount of $642.25, a standard deviation of $407.92, and a range from 0.01 to 5,000.00.
+
+Post-Policy Reimbursements: The dataset contains 42,886 records with a mean benefit amount of $589.94, a standard deviation of $430.08, and a range from 0.01 to 9,000.00.
+
+Analyzing the benefit amount for reimbursements before and after the policy change reveals the following observations. The mean benefit amount decreased slightly from $642.25 to $589.94 after the policy change, indicating a potential decrease in the average reimbursement amount. Similarly to the claims' adjusted amount, the standard deviation also decreased from $407.92 to $430.08, suggesting a reduction in the variability of the benefit amounts after the policy change.
+
+
+
+Overall, these comparative analyses provide insights into the changes in the adjusted amount for claims and the benefit amount for reimbursements before and after the policy change. It appears that the average adjusted amount for claims and the average benefit amount for reimbursements slightly decreased after the policy change, along with a decrease in the variability of these amounts. However, it is important to perform further statistical tests and analyses to validate these findings and determine the statistical significance of the observed differences.
+
+
+
+The statistical findings show the effects of the policy change on both the adjusted amount for claims and the benefit amount for reimbursements. Here are the insights derived from these findings:
+
+
+Claims Adjusted Amount:
+
+Before the policy change (pre-policy claims), the average adjusted amount was lower ($312.40), indicating that, on average, lower reimbursement amounts were given for theft claims.
+After the policy change (post-policy claims), the average adjusted amount increased slightly ($338.42), suggesting a potential increase in the average reimbursement amount.
+The reduction in claims variability, as shown by the lower standard deviation after the policy change ($556.98), indicates that there was less variation in the adjusted amounts, making the reimbursement process more consistent.
+
+
+Reimbursements Benefit Amount:
+
+Before the policy change (reimbursements before the policy), the average benefit amount was higher ($642.25), meaning that, on average, higher reimbursement amounts were provided to theft victims.
+After the policy change (reimbursements after the policy), the average benefit amount slightly decreased ($589.94), indicating a potential decrease in the average reimbursement amount.
+The increase in variability, as indicated by the higher standard deviation after the policy change ($430.08), suggests that there was more variation in the benefit amounts, possibly due to changes in reimbursement policies or other factors.
+Overall, these findings suggest that the policy change had some impact on the adjusted amounts for claims and the benefit amounts for reimbursements. While the average adjusted amount and benefit amount showed slight changes, the reduction in variability indicates a more consistent reimbursement process after the policy change. However, it is important to note that further analysis and investigation are necessary to understand the full implications of the policy change and its effects on the volume and value of claims and reimbursements.

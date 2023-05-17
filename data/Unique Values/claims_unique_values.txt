@@ -1,0 +1,35 @@
+          Features  Uniques
+0           caseID   138182
+1           cardID   149710
+2      case_county       58
+3  client_language       14
+4       retail_zip     5287
+5          adj_amt    50599
+6    transact_date      303
+
+Claims DataFrame:
+Count of unique values in:
+
+caseID: 138,182 -- multiple claims can be associated with the same case.
+cardID: 149,710 -- multiple claims can be associated with the same card
+case_county: 58 -- claims are distributed across different counties.
+client_language: 14 -- individuals with different primary languages are making claims.
+retail_zip: 5,287 -- claim thefts are associated with various retail locations.
+adj_amt: 50,599 -- a probable wide range of reimbursement amounts.
+transact_date: 303 -- claims are claims made on different dates thorughout the year.
+
+   Unique Client Languages
+0                  English
+1                  Spanish
+2                  Tagalog
+3                   Arabic
+4         Eastern Armenian
+5                    Hmong
+6                  Russian
+7                      Lao
+8               Vietnamese
+9                  Chinese
+10                  Korean
+11              Portuguese
+12                 Punjabi
+13                Japanese

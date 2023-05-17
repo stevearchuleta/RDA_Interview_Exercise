@@ -1,0 +1,68 @@
+
+             Features  Uniques
+0              caseID    88056
+1            cardID_1    88056
+2            cardID_2    17640
+3            cardID_3     3153
+4            cardID_4      763
+5         case_county       56
+6   client_language_1       18
+7   client_language_2       17
+8   client_language_3       11
+9   client_language_4        8
+10     benefit_amount    23221
+11       benefit_year       10
+12      benefit_month       12
+13           pay_date      280
+
+Reimbursements DataFrame:
+Count of unique values in:
+
+caseID: 88,056 -- each case is associated with a unique card.
+caseID: 88,056 -- each case is associated with a unique card.
+cardID_2: 17,640 -- multiple cards may be associated with the same case.
+cardID_3: 3,153 -- multiple cards may be associated with the same case.
+cardID_4: 763 -- multiple cards may be associated with the same case.
+case_county: 58 -- two (2) less counties than claims dataset, but reimbursements are still distributed across different counties.
+client_language_1: 18 -- a diverse language distribution among individuals receiving reimbursements.
+client_language_2: 17 -- a diverse language distribution among individuals receiving reimbursements.
+client_language_3: 11 -- a diverse language distribution among individuals receiving reimbursements.
+client_language_4: 8 -- a diverse language distribution among individuals receiving reimbursements.
+benefit_amount: 23,221 -- a possible wide range of reimbursement amounts.
+benefit_year: 10 -- reimbursements received in 10 different years.
+benefit_month: 12 -- reimbursements received all 12 months.
+pay_date: 280 -- reimbursements made on different dates.
+
+
+   Unique Client Language 1
+0                   English
+1                   Spanish
+2                     Farsi
+3                   Russian
+4                     Hmong
+5                    Arabic
+6                 Cambodian
+7                Vietnamese
+8                   Tagalog
+9          Eastern Armenian
+10                   Korean
+11                  Chinese
+12                  Punjabi
+13                      Lao
+14                     Mien
+15                 Japanese
+16               Portuguese
+17                  Unknown
+
+
+  Unique Benefit Years
+0                 2022
+1                 2021
+2                 2001
+3                 2020
+4                 2002
+5                 2016
+6                 2000
+7                 2023
+8                 2012
+9                 2003

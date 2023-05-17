@@ -1,0 +1,109 @@
+Number of total missing values in claims_copy: 250748
+Number of total missing values in reimbursements_copy: 316711
+
+Missing values in claims_copy:
+caseID             False
+cardID             False
+case_county        False
+client_language    False
+retail_zip          True
+adj_amt            False
+transact_date      False
+dtype: bool
+
+Missing values in reimbursements_copy:
+caseID               False
+cardID_1             False
+cardID_2             False
+cardID_3             False
+cardID_4             False
+case_county           True
+client_language_1     True
+client_language_2     True
+client_language_3     True
+client_language_4     True
+benefit_amount       False
+benefit_year         False
+benefit_month        False
+pay_date             False
+dtype: bool
+
+Columns with missing values in claims_copy:
+Index(['retail_zip'], dtype='object')
+
+Columns with missing values in reimbursements_copy:
+Index(['case_county', 'client_language_1', 'client_language_2',
+       'client_language_3', 'client_language_4'],
+      dtype='object')
+
+Number of missing values by column in claims_copy:
+caseID                  0
+cardID                  0
+case_county             0
+client_language         0
+retail_zip         250748
+adj_amt                 0
+transact_date           0
+dtype: int64
+
+Number of missing values by column in reimbursements_copy:
+caseID                    0
+cardID_1                  0
+cardID_2                  0
+cardID_3                  0
+cardID_4                  0
+case_county               5
+client_language_1         5
+client_language_2     87196
+client_language_3    111911
+client_language_4    117594
+benefit_amount            0
+benefit_year              0
+benefit_month             0
+pay_date                  0
+dtype: int64
+
+
+Percentage of missing values in claims_copy:
+retail_zip    72.557127
+dtype: float64
+
+
+Percentage of missing values in reimbursements_copy:
+case_county           0.004166
+client_language_1     0.004166
+client_language_2    72.651225
+client_language_3    93.243626
+client_language_4    97.978670
+dtype: float64
+
+=======================================================
+
+Total number of missing values in case_county: 5
+Mode of case_county: 19.0
+(I OPTED TO DROP THESE ROWS)
+
+
+Total number of missing values in client_language_1: 5
+Mode of client_language_1: English
+
+(I OPTED TO DROP THESE ROWS)
+
+========================================================
+When deciding whether to impute the mode for rows with missing values or delete the rows with missing values in the claims_copy and reimbursements_copy dataframes, it is important to consider best practices and the specific characteristics of the datasets.
+
+For the claims_copy dataframe with 345,588 rows and a missing value percentage of 72.557127% in the retail_zip feature, it is advisable to analyze the impact of missing values on the analysis goals and the overall context of the project. Here are some considerations:
+
+Geographical Analysis: Since the retail_zip feature represents the zip code of the retailer location where the theft transaction occurred, it allows for geographical breakdown and analysis. Deleting rows with missing values would result in the loss of geographical information, potentially missing important insights. Imputing the mode for rows with missing values in retail_zip would retain the geographical aspect, enabling the analysis of geographical variations in the volume and value of claims and theft reimbursements.
+
+Regional Trends: Analyzing changes in volume and value of claims and theft reimbursements per retail_zip before and after the policy change can reveal regional trends. By deleting rows with missing values, regional patterns may be disrupted, and the analysis could lose the ability to identify significant impacts in specific regions. Imputing the mode for missing values would preserve regional trends and help capture regional variations in the analysis.
+
+Based on these considerations, it is recommended to impute the mode for missing values in the retail_zip feature of the claims_copy dataframe.
+
+For the reimbursements_copy dataframe with 120,020 rows and missing value percentages of 72.651225% in client_language_2, 93.243626% in client_language_3, and 97.978670% in client_language_4, the client_language_X features provide information about the primary spoken languages of the individuals associated with a given case. Here are some considerations:
+
+Demographic Analysis: Deleting rows with missing values in the client_language_X features would result in the loss of information about the primary spoken languages and demographic distribution of the individuals receiving reimbursements. Imputing the mode for missing values would allow the analysis to consider the demographic aspects and understand how different language groups were affected by the policy change.
+
+Communication Effectiveness: Analyzing the impact of the policy change on different language groups requires understanding the primary languages of the beneficiaries. Deleting rows with missing values in client_language_X would hinder the assessment of communication effectiveness. Imputing the mode for missing values would enable the analysis to evaluate the impact of the policy change on different language groups based on primary language data.
+
+Considering these considerations, it is recommended to impute the mode for missing values in the client_language_X features of the reimbursements_copy dataframe.

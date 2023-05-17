@@ -5,10 +5,38 @@ C:.
 |   README.md
 |   
 +---data
-|       claims.csv
-|       reimbursements.csv
-|       
+|   |   claims.csv
+|   |   reimbursements.csv
+|   |   
+|   +---Data Dictionaries
+|   |       claims_data_dictionary.xlsx
+|   |       reimbursements_data_dictionary.xlsx
+|   |       
+|   \---Feature by Feature
+|       +---claims_features_ideas
+|       |       adj_amt_feature.rtf
+|       |       card_id_feature.rtf
+|       |       case_county_feature.rtf
+|       |       case_id_feature.rtf
+|       |       client_language.rtf
+|       |       retail_zip_feature.rtf
+|       |       transact_date_feature.rtf
+|       |       
+|       \---reimbursments_features_ideas
+|               Benefit_month.rtf
+|               Benefit_year.rtf
+|               card_id_x_1-4_feature.rtf
+|               case_id_feature.rtf
+|               client_language_x _1-4.rtf
+|               Pay_date_feature.rtf
+|               
 +---Deliverable Submission
+|   \---reports
+|       |   Summary Report.docx
+|       |   
+|       \---figures
+|               RADD_logo.jpg
+|               
 +---Exercise Files
 |       JC-359684 RDA I-II Practical Exercise.docx
 |       
@@ -26,12 +54,6 @@ C:.
 |           03_feature_engineering-checkpoint.ipynb
 |           04_model_building_and_tuning-checkpoint.ipynb
 |           05_model_evaluation-checkpoint.ipynb
-|           
-+---reports
-|   |   Summary Report.docx
-|   |   
-|   \---figures
-|           RADD_logo.jpg
 |           
 +---scripts
 |       move_files.py

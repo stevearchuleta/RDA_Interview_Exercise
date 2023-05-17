@@ -1,0 +1,12 @@
+These code snippets are splitting the claims_copy and reimbursements_copy dataframes into two separate dataframes based on a specific date, January 27, 2023. The goal is to create subsets of data for analysis before and after a policy change, enabling comparisons of the volume and value of claims and reimbursements.
+
+For the claims_copy dataframe:
+
+pre_policy_claims contains all the rows where the transact_date is before January 27, 2023. This dataframe represents the claims made before the policy change.
+post_policy_claims contains all the rows where the transact_date is on or after January 27, 2023. This dataframe represents the claims made after the policy change.
+
+For the reimbursements_copy dataframe:
+
+reimbursements_pre_policy contains all the rows where the pay_date is before January 27, 2023. This dataframe represents the reimbursements processed before the policy change.
+reimbursements_post_policy contains all the rows where the pay_date is on or after January 27, 2023. This dataframe represents the reimbursements processed after the policy change.
+By splitting the dataframes based on the policy change date, it becomes possible to analyze the impact of the policy change on the volume and value of claims and reimbursements separately for the pre-policy and post-policy periods.
