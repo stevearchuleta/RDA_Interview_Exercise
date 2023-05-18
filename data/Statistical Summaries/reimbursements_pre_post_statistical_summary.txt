@@ -1,0 +1,41 @@
+Exploring the Distribution of Numerical Data 
+
+The .describe() function provides a summary of descriptive statistics for numerical columns in a dataframe, giving an overview of the central tendency, dispersion, and shape of the data distribution. The statistical findings show the effects of the policy change on the benefit amount for reimbursements. 
+
+When comparing the "benefit_amount" feature between the Pre-Policy Reimbursements dataset and the Post-Policy Reimbursements dataset, the following statistical analysis provides insights into their distributions:
+
+Pre-Policy Reimbursements Dataset:
+
+Count: 75,810
+Mean: 640.068558
+Standard Deviation: 399.641462
+Minimum: 0.01
+25th Percentile: 295.605
+Median (50th Percentile): 660.0
+75th Percentile: 905.0
+Maximum: 1819.0925
+Post-Policy Reimbursements Dataset:
+
+Count: 42,886
+Mean: 587.512746
+Standard Deviation: 418.909989
+Minimum: 0.01
+25th Percentile: 251.490
+Median (50th Percentile): 516.0
+75th Percentile: 880.0
+Maximum: 1822.7650
+From the statistical analysis, we can make the following comparisons between the Pre-Policy Reimbursements dataset and the Post-Policy Reimbursements dataset:
+
+Mean:
+
+The mean benefit amount in the Pre-Policy Reimbursements dataset is approximately 640.07, while in the Post-Policy Reimbursements dataset, it is approximately 587.51. This indicates a slight decrease in the average benefit amount after the policy change.
+Standard Deviation:
+
+The standard deviation of the benefit amounts in the Pre-Policy Reimbursements dataset is around 399.64, whereas in the Post-Policy Reimbursements dataset, it is approximately 418.91. This suggests a similar level of variation in the benefit amounts before and after the policy change.
+Minimum and Maximum:
+
+Both datasets have a minimum value of 0.01, indicating that there are no negative benefit amounts. The maximum benefit amount in the Pre-Policy Reimbursements dataset is 1819.0925, while in the Post-Policy Reimbursements dataset, it is 1822.7650. This shows no significant change in the maximum benefit amount after the policy change.
+Percentiles:
+
+The 25th, 50th, and 75th percentiles provide insights into the distribution of the benefit amounts. In the Pre-Policy Reimbursements dataset, the 25th percentile is 295.605, the median is 660.0, and the 75th percentile is 905.0. In the Post-Policy Reimbursements dataset, the 25th percentile is 251.490, the median is 516.0, and the 75th percentile is 880.0. These percentiles show a decrease in the benefit amounts after the policy change.
+In summary, the statistical comparative analysis of the "benefit_amount" feature between the Pre-Policy Reimbursements dataset and the Post-Policy Reimbursements dataset indicates a slight decrease in the average benefit amount after the policy change. The distribution of benefit amounts shows similar variation levels, with no significant changes in the minimum and maximum values. However, there is a noticeable decrease in the benefit amounts at various percentiles after the policy change. These findings suggest that the policy change had an impact on the benefit amounts in the reimbursements data.

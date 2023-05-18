@@ -1,0 +1,22 @@
+BUSINESS QUESTIONS:
+
+1.
+  In order to understand the reasons behind the difference in row counts between the datasets, analyze the unique identifiers or keys that connect the claims and reimbursements data frames. Examine the relationship between these identifiers and etermine how claims and reimbursements are linked in order to understand the reasons behind the difference in row counts.
+
+SELECT 
+    COUNT(DISTINCT c.caseUD) AS claims_row_count,
+    COUNT(DISTINCT r.caseID) AS reimbursements_row_count,
+    COUNT(DISTINCT c.caseUD || c.cardID) AS unique_claims_identifiers,
+    COUNT(DISTINCT r.caseID || r.cardID_1 || r.cardID_2 || r.card_ID_3 || r.card_ID_4) AS unique_reimbursements_identifiers
+FROM
+    claims c
+JOIN
+    reimbursements r ON c.caseUD = r.caseID
+
+This query calculates the row counts for both the claims and reimbursements datasets separately. It also examines the unique identifiers or keys that connect the two datasets.
+
+The DISTINCT keyword ensures that only unique values are considered for counting. In this case, it counts the distinct values of caseUD in the claims dataset and caseID in the reimbursements dataset. Additionally, it combines the relevant identifiers using concatenation (||) to analyze the unique combinations of identifiers.
+
+By joining the claims and reimbursements tables on their corresponding identifiers (c.caseUD = r.caseID), you establish the relationship between the two datasets. This allows you to understand how claims and reimbursements are linked based on the shared identifiers.
+
+Executing this query will provide insights into the row counts of the claims and reimbursements datasets and the unique identifiers connecting them. It helps in understanding the reasons behind the difference in row counts and the relationship between the two datasets.

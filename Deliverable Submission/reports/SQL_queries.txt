@@ -1,0 +1,514 @@
+MySQL BUSINESS QUESTIONS:
+
+1.TOTAL Claims
+adj_amt
+Calculate the total value of claims reported before and after the policy change. Sum the adj_amt for transactions before the policy change date ('2023-01-27') and after the policy change date to observe the overall impact of the policy change on the monetary value of theft claims.
+
+SELECT 
+    SUM(CASE WHEN transact_date < '2023-01-27' THEN adj_amt ELSE 0 END) AS total_claims_pre_policy,
+    SUM(CASE WHEN transact_date >= '2023-01-27' THEN adj_amt ELSE 0 END) AS total_claims_post_policy
+FROM claims;
+
+TOTAL CLAIMS PRE POLICY: $ 91,512,819.47
+TOTAL CLAIMS POST POLICY: $ 14,669,931.82
+
+
+
+2.AVERAGE Claim
+adj_amt
+Calculate the average value of claims by dividing the total adj_amt by the number of claims. Provide insights into whether the policy change affected not only the volume but also the average size of theft claims.
+
+SELECT 
+    AVG(CASE WHEN transact_date < '2023-01-27' THEN adj_amt END) AS average_claim_value_pre_policy,
+    AVG(CASE WHEN transact_date >= '2023-01-27' THEN adj_amt END) AS average_claim_value_post_policy
+FROM claims;
+
+AVERAGE CLAIM VALUE PRE POLICY: $ 303.85
+AVERAGE CLAIM VALUE POST POLICY: $ 330.34
+
+
+
+3. Distribution of Claims
+adj_amt
+Generate a histogram of the claim values (adj_amt) grouped into ranges. Categorize the claims into pre-policy and post-policy periods and count the number of claims falling within each value range. The histogram helps visualize any changes in the distribution of claim values after the policy change.Analyze the total value, average value, and distribution of claim values before and after the policy change. Gain insight into the impact of the policy change on the monetary aspects of theft claims.
+
+SELECT 
+    CASE WHEN transact_date < '2023-01-27' THEN 'Pre-Policy' ELSE 'Post-Policy' END AS policy_period,
+    FLOOR(adj_amt / 100) * 100 AS claim_value_range,
+    COUNT(*) AS claim_count
+FROM claims
+WHERE transact_date < '2023-01-27' OR transact_date >= '2023-01-27' -- Adjust the dates as needed
+GROUP BY policy_period, claim_value_range
+ORDER BY policy_period, claim_value_range;
+
+-- 233 rows returned
+
+
+
+4.TOTAL Reimbursements
+benefit_amout
+Calculate the total value of reimbursements reported before and after the policy change.Sum the benefit_amount for transactions before the policy change date ('2023-01-27') and after the policy change date to observe the overall impact of the policy change on the monetary value of theft reimbursements.
+
+SELECT
+    SUM(CASE WHEN pay_date < '2023-01-27' THEN benefit_amount ELSE 0 END) AS total_reimbursements_pre_policy,
+    SUM(CASE WHEN pay_date >= '2023-01-27' THEN benefit_amount ELSE 0 END) AS total_reimbursements_post_policy
+FROM reimbursements;
+ 
+TOTAL REIMBURSEMENTS PRE POLICY: $ 48,896,250.00
+TOTAL REIMBURSEMENTS POST POLICY: $ 25,368,774.00
+
+
+
+5. AVERAGE Reimbursements
+benefit amount
+Calculate the average value of reimbursements by dividing the total benfit_amount by the number of reimbursements. Provide insights into whether the policy change affected not only the volume but also the average size of theft reimbursements.
+
+SELECT
+AVG(benefit_amount) AS average_reimbursement_value
+FROM reimbursements;
+
+SELECT
+AVG(CASE WHEN pay_date < '2023-01-27' THEN benefit_amount END) AS average_reimbursement_value_pre_policy,
+AVG(CASE WHEN pay_date >= '2023-01-27' THEN benefit_amount END) AS average_reimbursement_value_post_policy
+FROM reimbursements;
+
+
+AVERAGE REIMBURSEMENT VALUE PRE POLICY: $ 635.68
+AVERAGE REIMBURSEMENT VALUE POST POLICY: $ 588.66
+
+
+
+6.Distribution of Reimbursements
+benefit_amount
+Generate a histogram of the reimbursement values (benefit_amount) grouped into ranges. Categorize the claims into pre-policy and post-policy periods and count the number of reimbursements falling within each value range. The histogram helps visualize any changes in the distribution of reimbursement values after the policy change. Analyze the total value, average value, and distribution of reimbursement values before and after the policy change. Gain insight into the impact of the policy change on the monetary aspects of theft reimbursements.
+
+SELECT 
+    CASE WHEN transact_date < '2023-01-27' THEN 'Pre-Policy' ELSE 'Post-Policy' END AS policy_period,
+    FLOOR(adj_amt / 100) * 100 AS claim_value_range,
+    COUNT(*) AS claim_count
+FROM claims
+WHERE transact_date < '2023-01-27' OR transact_date >= '2023-01-27' -- Adjust the dates as needed
+GROUP BY policy_period, claim_value_range
+ORDER BY policy_period, claim_value_range;
+
+-- 80 rows returned
+
+
+
+7. Time-based Comparison
+transact_date, pay_date, adj_amt, benefit_amout
+Retrieve the count and total amount of claims and theft reimbursements for both the periods before and after the policy change. Combines the results for claims and reimbursements into a single result set (indicating the policy period) and provide the count and total amount for each category.Compare the volume (count) and value (total amount) of claims and reimbursements before and after the policy change.
+
+SELECT
+    'Claims - Before Policy Change' AS category,
+    COUNT(*) AS count,
+    SUM(adj_amt) AS total_amount
+FROM
+    claims
+WHERE
+    transact_date < '2023-01-27'
+
+UNION ALL
+
+SELECT
+    'Claims - After Policy Change' AS category,
+    COUNT(*) AS count,
+    SUM(adj_amt) AS total_amount
+FROM
+    claims
+WHERE
+    transact_date >= '2023-01-27'
+
+UNION ALL
+
+SELECT
+    'Reimbursements - Before Policy Change' AS category,
+    COUNT(*) AS count,
+    SUM(benefit_amount) AS total_amount
+FROM
+    reimbursements
+WHERE
+    pay_date < '2023-01-27'
+
+UNION ALL
+
+SELECT
+    'Reimbursements - After Policy Change' AS category,
+    COUNT(*) AS count,
+    SUM(benefit_amount) AS total_amount
+FROM
+    reimbursements
+WHERE
+    pay_date >= '2023-01-27';
+
+
+
+
+CATEGORY				COUNT		TOTAL AMOUNT
+Claims - Before Policy Change: 		301179 		$91,512,819.47
+Claims - After Policy Change:  		44408 		$14,669,931.82
+Reimbursements - Before Policy Change: 	76919		$48,896,250.00
+Reimbursements - After Policy Change:   43096 		$25,368,774.00
+
+
+
+8. Monthly Trend Analysis
+transact_date, pay_date, adj_amt, benefit_amount
+Analyze the monthly trends in the volume and value of claims and theft reimbursements over time, and identify any significant differences before and after the policy change. Retrieve the monthly trends for both claims and reimbursements. Calculate the count of claims and reimbursements as well as the total amount for each month. Observe the trends in the volume and value of claims and reimbursements over time. Compare the trends before and after the policy change to identify any significant differences in the patterns.  Results display the monthly claim trends before the policy change, the monthly claim trends after the policy change, and the overall monthly reimbursement trends.
+
+-- Claims Trend Analysis - Before Policy Change (sorted by total_claims_amount):
+SELECT
+    DATE_FORMAT(transact_date, '%m') AS month,
+    COUNT(*) AS claims_count,
+    SUM(adj_amt) AS total_claims_amount,
+    'Claims' AS category,
+    'Before Policy Change' AS policy_period
+FROM
+    claims
+WHERE
+    transact_date < '2023-01-27'
+GROUP BY
+    month
+ORDER BY
+    total_claims_amount;
+
+MONTH COUNT	AMOUNT	CATEGORY POLICY PERIOD
+07 27012 7865849.84 Claims Before Policy Change
+06 25805 8076146.29 Claims Before Policy Change
+08 32644 9215761.81 Claims Before Policy Change
+09 35793 10779262.66 Claims Before Policy Change
+10 38248 12659453.28 Claims Before Policy Change
+11 43151 12976470.18 Claims Before Policy Change
+01 47437 14802468.08 Claims Before Policy Change
+12 51089 15137407.33 Claims Before Policy Change
+
+===================================================
+-- Claims Trend Analysis - After Policy Change (sorted by total_claims_amount)
+
+SELECT
+DATE_FORMAT(transact_date, '%m') AS month,
+COUNT(*) AS claims_count,
+ROUND(SUM(adj_amt), 2) AS total_claims_amount,
+'Claims' AS category,
+'After Policy Change' AS policy_period
+FROM
+claims
+WHERE
+transact_date >= '2023-01-27'
+GROUP BY
+month
+ORDER BY
+total_claims_amount;
+
+-- MONTH COUNT	AMOUNT		CATEGORY POLICY PERIOD
+-- 01	3472	970134.73	Claims	After Policy Change
+-- 03	5774	1918205.73	Claims	After Policy Change
+-- 02	35162	11781591.36	Claims	After Policy Change
+====================================================
+-- Reimbursements Trend Analysis - Before Policy Change (sorted by total_reimbursements_amount):
+
+SELECT
+    DATE_FORMAT(pay_date, '%m') AS month,
+    COUNT(*) AS reimbursements_count,
+    ROUND(SUM(benefit_amount), 2) AS total_reimbursements_amount,
+    'Reimbursements' AS category,
+    'Before Policy Change' AS policy_period
+FROM
+    reimbursements
+WHERE
+    pay_date < '2023-01-27'
+GROUP BY
+    month
+ORDER BY
+    total_reimbursements_amount;
+
+MONTH COUNT AMOUNT  CATEGORY        POLICY PERIOD
+07	6486	4365801	Reimbursements	Before Policy Change
+06	6405	4399498	Reimbursements	Before Policy Change
+09	8946	5499708	Reimbursements	Before Policy Change
+08	8865	5815312	Reimbursements	Before Policy Change
+11	9806	6371553	Reimbursements	Before Policy Change
+10	10155	6870459	Reimbursements	Before Policy Change
+01	13136	7635724	Reimbursements	Before Policy Change
+12	13120	7938195	Reimbursements	Before Policy Change
+====================================================
+Reimbursements Trend Analysis - After Policy Change (sorted by total_reimbursements_amount):
+
+SELECT
+    DATE_FORMAT(pay_date, '%m') AS month,
+    COUNT(*) AS reimbursements_count,
+    SUM(benefit_amount) AS total_reimbursements_amount,
+    'Reimbursements' AS category,
+    'After Policy Change' AS policy_period
+FROM
+    reimbursements
+WHERE
+    pay_date >= '2023-01-27'
+GROUP BY
+    month
+ORDER BY
+    total_reimbursements_amount;
+
+
+MONTH COUNT AMOUNT      CATEGORY   		POLICY PERIOD
+01	2652	1250700	    Reimbursements	After Policy Change
+02	17414	10347920	Reimbursements	After Policy Change
+03	23030	13770154	Reimbursements	After Policy Change
+====================================================
+SELECT
+    DATE_FORMAT(transact_date, '%Y-%m') AS claim_month,
+    COUNT(*) AS claims_count,
+    SUM(adj_amt) AS total_claims_amount,
+    'Claims' AS category
+FROM
+    claims
+GROUP BY
+    claim_month
+
+UNION ALL
+
+-- Reimbursements Trend Analysis
+SELECT
+    DATE_FORMAT(pay_date, '%Y-%m') AS reimbursement_month,
+    COUNT(*) AS reimbursements_count,
+    SUM(benefit_amount) AS total_reimbursements_amount,
+    'Reimbursements' AS category
+FROM
+    reimbursements
+GROUP BY
+    reimbursement_month;
+
+
+CLAIM MONTH	CLAIM COUNT	TOTAL CLAIMS AMOUNT	CATEGORY
+12		51089		$15137407.33		Claims
+01		50909		$15772602.81		Claims
+11		43151		$12976470.18		Claims
+10		38248		$12659453.28		Claims
+09		35793		$10779262.66		Claims
+02		35162		$11781591.36		Claims
+08		32644		$9215761.81		Claims
+07		27012		$7865849.84		Claims
+06		25805		$8076146.29		Claims
+03		23030		$13770154.00		Reimbursements
+02		17414		$10347920.00		Reimbursements
+01		15788		$8886424.00		Reimbursements
+12		13120		$7938195.00		Reimbursements
+10		10155		$6870459.00		Reimbursements
+11		9806		$6371553.00		Reimbursements
+09		8946		$5499708.00		Reimbursements
+08		8865		$5815312.00		Reimbursements
+07		6486		$4365801.00		Reimbursements
+06		6405		$4399498.00		Reimbursements
+03		5774		$1918205.73		Claims
+
+
+
+9. Temporal Patterns
+transact_date, pay_date, adj_amt, benefit_amount
+Analyze the transact_date, pay_date feature to uncover temporal patterns: seasonality, weekly, monthly, or specific days. Look for high claim volumes or values. Patterns may provide context to the changes observed after the policy implementation.
+
+
+Claims Temporal Patterns - Before Policy Change
+
+SELECT
+    DAYOFMONTH(transact_date) AS claim_date,
+    COUNT(*) AS claims_count,
+    ROUND(SUM(adj_amt), 2) AS total_claims_amount,
+    'Claims' AS category,
+    'Before Policy Change' AS policy_period
+FROM
+    claims
+WHERE
+    transact_date < '2023-01-27'
+GROUP BY
+    claim_date
+ORDER BY
+    claims_count
+
+
+DATE    COUNT   AMOUNT       CATEGORY   POLICY PERIOD
+2	39800	21148473.74	Claims	Before Policy Change
+1	32924	17351818.79	Claims	Before Policy Change
+3	32749	15826408.76	Claims	Before Policy Change
+10	13304	2715230.31	Claims	Before Policy Change
+9	13118	2561357.63	Claims	Before Policy Change
+8	13109	2672738.92	Claims	Before Policy Change
+6	13054	2833728.45	Claims	Before Policy Change
+4	13045	2642380.24	Claims	Before Policy Change
+5	13010	2640267.46	Claims	Before Policy Change
+7	12982	2604928.22	Claims	Before Policy Change
+11	8873	1613984.65	Claims	Before Policy Change
+12	8126	1648912.53	Claims	Before Policy Change
+13	7394	1327469.6	Claims	Before Policy Change
+15	6332	1049697.75	Claims	Before Policy Change
+16	6184	1068442.22	Claims	Before Policy Change
+14	6107	1170808.54	Claims	Before Policy Change
+18	5997	1007335.91	Claims	Before Policy Change
+17	5572	825830.21	Claims	Before Policy Change
+19	5246	832878.22	Claims	Before Policy Change
+23	4953	810636.62	Claims	Before Policy Change
+22	4869	911274.41	Claims	Before Policy Change
+21	4827	714185.76	Claims	Before Policy Change
+20	4452	728838.75	Claims	Before Policy Change
+24	3570	547634.65	Claims	Before Policy Change
+30	3511	789004.38	Claims	Before Policy Change
+29	3466	737656.98	Claims	Before Policy Change
+25	3331	494648.79	Claims	Before Policy Change
+26	3279	644835.28	Claims	Before Policy Change
+28	3180	598719.34	Claims	Before Policy Change
+27	2780	506728.23	Claims	Before Policy Change
+31	2035	485964.13	Claims	Before Policy Change  
+============================================================
+
+Claims Temporal Patterns - After Policy Change
+
+SELECT
+    DAYOFMONTH(transact_date) AS claim_date,
+    COUNT(*) AS claims_count,
+    ROUND(SUM(adj_amt), 2) AS total_claims_amount,
+    'Claims' AS category,
+    'After Policy Change' AS policy_period
+FROM
+    claims
+WHERE
+    transact_date >= '2023-01-27'
+GROUP BY
+    claim_date
+ORDER BY
+    claims_count
+
+    DATE COUNT     AMOUNT     CATEGORY    PAY PERIOD
+2	6534	3493356.11	Claims	After Policy Change
+1	5729	3004079.97	Claims	After Policy Change
+3	5052	2402392.93	Claims	After Policy Change
+6	2563	554809.27	Claims	After Policy Change
+7	2367	481899.59	Claims	After Policy Change
+9	2218	502853.61	Claims	After Policy Change
+5	2194	427281.24	Claims	After Policy Change
+10	2027	455730.65	Claims	After Policy Change
+4	2022	409693.42	Claims	After Policy Change
+8	2011	347870.58	Claims	After Policy Change
+11	1246	215828.58	Claims	After Policy Change
+13	1098	217640.78	Claims	After Policy Change
+12	962	203305.93	Claims	After Policy Change
+30	884	319395.3	Claims	After Policy Change
+27	875	176032.37	Claims	After Policy Change
+31	821	254155.99	Claims	After Policy Change
+29	810	236357.04	Claims	After Policy Change
+14	638	102157.8	Claims	After Policy Change
+28	633	138570.18	Claims	After Policy Change
+15	563	108322.29	Claims	After Policy Change
+16	560	99076.69	Claims	After Policy Change
+19	465	93626.81	Claims	After Policy Change
+17	442	77546.99	Claims	After Policy Change
+18	427	90458.13	Claims	After Policy Change
+20	251	45849.69	Claims	After Policy Change
+21	229	43595.49	Claims	After Policy Change
+26	219	64188.17	Claims	After Policy Change
+23	163	25176.27	Claims	After Policy Change
+25	162	35474.18	Claims	After Policy Change
+22	134	25038.85	Claims	After Policy Change
+24	109	18166.92	Claims	After Policy Change
+===========================================================
+
+Reimbursements Temporal Patterns - Before Policy Change
+
+SELECT
+    DAYOFMONTH(pay_date) AS reimbursement_date,
+    COUNT(*) AS reimbursements_count,
+    ROUND(SUM(benefit_amount), 2) AS total_reimbursements_amount,
+    'Reimbursements' AS category,
+    'Before Policy Change' AS policy_period
+FROM
+    reimbursements
+WHERE
+    pay_date < '2023-01-27'
+GROUP BY
+    reimbursement_date
+ORDER BY
+    reimbursements_count
+
+
+DATE COUNT      AMOUNT      CATEGORY     POLICY PERIOD
+19	3493	2289171	Reimbursements	Before Policy Change
+15	3355	2114446	Reimbursements	Before Policy Change
+9	3320	2235217	Reimbursements	Before Policy Change
+21	3309	2022599	Reimbursements	Before Policy Change
+13	3229	2140776	Reimbursements	Before Policy Change
+18	3195	2127115	Reimbursements	Before Policy Change
+23	3185	1875610	Reimbursements	Before Policy Change
+16	3159	2038269	Reimbursements	Before Policy Change
+14	3111	2047362	Reimbursements	Before Policy Change
+20	3089	2022850	Reimbursements	Before Policy Change
+12	3065	2074173	Reimbursements	Before Policy Change
+22	3034	1832232	Reimbursements	Before Policy Change
+17	2917	1835718	Reimbursements	Before Policy Change
+8	2665	1800775	Reimbursements	Before Policy Change
+10	2591	1707297	Reimbursements	Before Policy Change
+7	2584	1689509	Reimbursements	Before Policy Change
+6	2407	1628989	Reimbursements	Before Policy Change
+28	2217	1348402	Reimbursements	Before Policy Change
+26	2160	1268895	Reimbursements	Before Policy Change
+29	2098	1198758	Reimbursements	Before Policy Change
+11	2059	1457119	Reimbursements	Before Policy Change
+5	2054	1393384	Reimbursements	Before Policy Change
+25	1945	1172345	Reimbursements	Before Policy Change
+30	1939	1060881	Reimbursements	Before Policy Change
+27	1870	1133292	Reimbursements	Before Policy Change
+24	1696	1025700	Reimbursements	Before Policy Change
+2	1654	994972	Reimbursements	Before Policy Change
+4	1638	1005081	Reimbursements	Before Policy Change
+3	1522	951899	Reimbursements	Before Policy Change
+1	1511	949362	Reimbursements	Before Policy Change
+31	848	454052	Reimbursements	Before Policy Change
+===========================================================
+
+-- Reimbursements Temporal Patterns - After Policy Change
+
+SELECT
+    DAYOFMONTH(pay_date) AS reimbursement_date,
+    COUNT(*) AS reimbursements_count,
+    ROUND(SUM(benefit_amount), 2) AS total_reimbursements_amount,
+    'Reimbursements' AS category,
+    'After Policy Change' AS policy_period
+FROM
+    reimbursements
+WHERE
+    pay_date >= '2023-01-27'
+GROUP BY
+    reimbursement_date
+ORDER BY
+    reimbursements_count
+
+DATE   COUNT     AMOUNT       CATEGORY      POLICY PERIOD
+10	2363	1438088	Reimbursements	After Policy Change
+16	2202	1300968	Reimbursements	After Policy Change
+9	2200	1405894	Reimbursements	After Policy Change
+8	2120	1312350	Reimbursements	After Policy Change
+22	2113	1192907	Reimbursements	After Policy Change
+15	2091	1266833	Reimbursements	After Policy Change
+14	2056	1172922	Reimbursements	After Policy Change
+17	2051	1167114	Reimbursements	After Policy Change
+7	2020	1336970	Reimbursements	After Policy Change
+27	2009	1115921	Reimbursements	After Policy Change
+3	1926	1213773	Reimbursements	After Policy Change
+23	1856	1100591	Reimbursements	After Policy Change
+21	1793	1070358	Reimbursements	After Policy Change
+13	1774	1073950	Reimbursements	After Policy Change
+28	1706	959379	Reimbursements	After Policy Change
+6	1665	1089084	Reimbursements	After Policy Change
+24	1625	941495	Reimbursements	After Policy Change
+2	1612	938494	Reimbursements	After Policy Change
+30	1585	864303	Reimbursements	After Policy Change
+1	1330	701121	Reimbursements	After Policy Change
+29	1034	507898	Reimbursements	After Policy Change
+31	995	531824	Reimbursements	After Policy Change
+20	942	543377	Reimbursements	After Policy Change
+18	641	362065	Reimbursements	After Policy Change
+4	411	254095	Reimbursements	After Policy Change
+25	274	166738	Reimbursements	After Policy Change
+11	229	115620	Reimbursements	After Policy Change
+19	198	98123	Reimbursements	After Policy Change
+12	152	70986	Reimbursements	After Policy Change
+26	83	36490	Reimbursements	After Policy Change
+5	40	19043	Reimbursements	After Policy Change

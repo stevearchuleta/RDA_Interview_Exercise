@@ -10,3 +10,10 @@ For the reimbursements_copy dataframe:
 reimbursements_pre_policy contains all the rows where the pay_date is before January 27, 2023. This dataframe represents the reimbursements processed before the policy change.
 reimbursements_post_policy contains all the rows where the pay_date is on or after January 27, 2023. This dataframe represents the reimbursements processed after the policy change.
 By splitting the dataframes based on the policy change date, it becomes possible to analyze the impact of the policy change on the volume and value of claims and reimbursements separately for the pre-policy and post-policy periods.
+
+
+Data Frame	Shape
+0	pre_policy_claims	(285512, 7)
+1	post_policy_claims	(42168, 7)
+2	reimbursements_pre_policy	(75810, 14)
+3	reimbursements_post_policy	(42886, 14)

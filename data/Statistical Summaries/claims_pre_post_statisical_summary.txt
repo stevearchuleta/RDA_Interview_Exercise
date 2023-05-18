@@ -1,0 +1,41 @@
+Exploring the Distribution of Numerical Data 
+
+The .describe() function provides a summary of descriptive statistics for numerical columns in a dataframe, giving an overview of the central tendency, dispersion, and shape of the data distribution. The statistical findings show the effects of the policy change on the adjusted amount for claims. 
+
+When comparing the "adj_amt" feature between the Pre-Policy Claims dataset and the Post-Policy Claims dataset, the following statistical analysis provides insights into their distributions:
+
+Pre-Policy Claims Dataset:
+
+Count: 285,512
+Mean: 285.011653
+Standard Deviation: 311.810996
+Minimum: 0.00
+25th Percentile: 42.45
+Median (50th Percentile): 159.64
+75th Percentile: 420.0
+Maximum: 986.325
+Post-Policy Claims Dataset:
+
+Count: 42,168
+Mean: 321.453179
+Standard Deviation: 333.484343
+Minimum: 0.01
+25th Percentile: 71.56
+Median (50th Percentile): 200.00
+75th Percentile: 495.0
+Maximum: 1130.160
+From the statistical analysis, we can observe the following comparisons between the Pre-Policy Claims dataset and the Post-Policy Claims dataset:
+
+Mean:
+
+The mean adjusted amount in the Pre-Policy Claims dataset is approximately 285.01, while in the Post-Policy Claims dataset, it is approximately 321.45. This indicates an increase in the average adjusted amount after the policy change.
+Standard Deviation:
+
+The standard deviation of the adjusted amounts in the Pre-Policy Claims dataset is around 311.81, whereas in the Post-Policy Claims dataset, it is approximately 333.48. This suggests a slightly higher variation in the adjusted amounts after the policy change.
+Minimum and Maximum:
+
+Both datasets have a minimum value greater than zero, indicating that there are no negative adjusted amounts. The maximum adjusted amount in the Pre-Policy Claims dataset is 986.325, while in the Post-Policy Claims dataset, it is 1130.160. This shows an increase in the maximum adjusted amount after the policy change.
+Percentiles:
+
+The 25th, 50th, and 75th percentiles provide insights into the distribution of the adjusted amounts. In the Pre-Policy Claims dataset, the 25th percentile is 42.45, the median is 159.64, and the 75th percentile is 420.0. In the Post-Policy Claims dataset, the 25th percentile is 71.56, the median is 200.00, and the 75th percentile is 495.0. These percentiles show that there is a shift towards higher adjusted amounts after the policy change.
+In summary, the statistical comparative analysis of the "adj_amt" feature between the Pre-Policy Claims dataset and the Post-Policy Claims dataset indicates that, on average, the adjusted amounts increased after the policy change. The distribution also shows slightly higher variation and an overall shift towards higher adjusted amounts. These findings suggest that the policy change had an impact on the adjusted amounts in the claims data.
