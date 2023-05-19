@@ -1,0 +1,38 @@
+Handle outliers by defining upper and lower thresholds based on the interquartile range (IQR) aims to mitigate the impact of extreme values on the analysis. This approach helps identify and limit the effect of outliers that could distort the overall data distribution while maintaining the integrity of the data.
+
+To determine the thresholds, the lower and upper limits are calculated using the 1.5 times IQR technique. Any data points below the lower threshold or above the upper threshold are considered outliers. These outliers are then capped, meaning their values are replaced with the respective threshold value.
+
+The process of capping the outliers ensures that extreme values do not disproportionately influence the analysis and statistical measures. After capping, the processed data frames are given a suffix "_capped" to indicate that the outliers have been addressed. This naming convention enhances transparency and clarity in the data processing steps.
+
+Furthermore, the count of outliers is provided as output for each data frame, offering insights into the extent of outliers present in the data. Capping sets reasonable boundaries for outliers, preventing them from having an exaggerated influence on the analysis or statistical measures.
+
+
+Data Frame	Shape
+0	pre_policy_claims_capped	(285512, 7)
+1	post_policy_claims_capped	(42168, 7)
+2	reimbursements_pre_policy_capped	(75810, 14)
+3	reimbursements_post_policy_capped	(42886, 14)
+
+
+Pre-Policy Claims:
+Number of outliers in adj_amt pre_policy_claims dataframe.
+20,442 outliers
+7.2%
+
+
+Post-Policy Claims:
+Number of outliers in adj_amt post_policy_claims dataframe.
+1043 outliers
+2.5%
+
+
+Pre-Policy Reimbursements:
+Number of outliers in reimbursements_pre_policy dataframe.
+579 outliers
+0.8%
+
+
+Post-Policy Reimbursements:
+Number of outliers in reimbursements_post_policy dataframe.
+317 outliers
+0.7%

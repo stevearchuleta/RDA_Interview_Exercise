@@ -1,0 +1,40 @@
+Raw Clients Dataset
+clients_copy
+     Client Language  Claims Count
+0            English        268800
+1            Spanish         46518
+2             Arabic          3658
+3         Vietnamese          2904
+4            Chinese          1864
+5            Russian          1321
+6   Eastern Armenian          1272
+7            Tagalog           481
+8             Korean           381
+9              Hmong           320
+10               Lao            82
+11           Punjabi            42
+12        Portuguese            21
+13          Japanese            16
+
+
+Raw Reimbursemtns Dataset
+reimbursements_copy
+   Client Language 1  Claims Count
+0            English         88840
+1            Spanish         22553
+2             Arabic          2678
+3         Vietnamese          1204
+4              Farsi           868
+5            Russian           755
+6   Eastern Armenian           701
+7            Chinese           513
+8            Tagalog           218
+9             Korean           147
+10             Hmong            93
+11         Cambodian            69
+12               Lao            31
+13           Punjabi            10
+14          Japanese             6
+15              Mien             5
+16        Portuguese             4
+17           Unknown             1

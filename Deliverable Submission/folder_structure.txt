@@ -1,0 +1,117 @@
+Folder PATH listing for volume WD_Black SN750 SSD 931GB
+Volume serial number is EE5C-C805
+C:.
+|   folder_structure.txt
+|   README.md
+|   
++---data
+|   |   claims.csv
+|   |   reimbursements.csv
+|   |   
+|   +---Benefits by Year Rankings
+|   |       claims_or_reimbursements_by_year_rankings.txt
+|   |       
+|   +---Cleaning
+|   |   +---Duplicate Records
+|   |   |       duplicate_values.txt
+|   |   |       
+|   |   \---Missing Values
+|   |           summary_of_missing.txt
+|   |           
+|   +---Data Dictionaries
+|   |       claims_data_dictionary.xlsx
+|   |       reimbursements_data_dictionary.xlsx
+|   |       
+|   +---EDA
+|   |   +---Outliers
+|   |   |       outliers.txt
+|   |   |       
+|   |   +---Statistical Summaries
+|   |   |       claims_pre_post_statisical_summary.txt
+|   |   |       reimbursements_pre_post_statistical_summary.txt
+|   |   |       
+|   |   \---Unique Values
+|   |           claims_unique_values.txt
+|   |           reimbursements_unique_values.txt
+|   |           
+|   +---Feature by Feature
+|   |   +---claims_features_ideas
+|   |   |       adj_amt_feature.rtf
+|   |   |       card_id_feature.rtf
+|   |   |       case_county_feature.rtf
+|   |   |       case_id_feature.rtf
+|   |   |       client_language.rtf
+|   |   |       retail_zip_feature.rtf
+|   |   |       transact_date_feature.rtf
+|   |   |       
+|   |   \---reimbursments_features_ideas
+|   |           benefit_amount.rtf
+|   |           Benefit_month.rtf
+|   |           Benefit_year.rtf
+|   |           card_id_x_1-4_feature.rtf
+|   |           case_id_feature.rtf
+|   |           client_language_x _1-4.rtf
+|   |           Pay_date_feature.rtf
+|   |           
+|   +---Language Rankings
+|   |       Language_Rankings.txt
+|   |       
+|   +---Pre-Post_Split
+|   |       27JAN2023.txt
+|   |       
+|   \---SQL_queries
+|           SQL_queries.txt
+|           
++---Exercise Files
+|       JC-359684 RDA I-II Practical Exercise.docx
+|       
++---notebooks
+|   |   Data_Cleaning_and_Preprocessing.ipynb
+|   |   
+|   \---.ipynb_checkpoints
+|           01_data_cleaning_and_preprocessing-checkpoint.ipynb
+|           02_exploratory_data_analysis-checkpoint.ipynb
+|           03_feature_engineering-checkpoint.ipynb
+|           04_model_building_and_tuning-checkpoint.ipynb
+|           05_model_evaluation-checkpoint.ipynb
+|           
++---plots
+|       adj_amt_cleaned_summary_stats.png
+|       adj_amt_raw_summary_stats.png
+|       benefit_amount_cleaned_summary_stats.png
+|       benefit_amount_raw_summary_stats.png
+|       cases_by_county_post_policy_claims.png
+|       cases_by_county_post_policy_reimbursements.png
+|       cases_by_county_pre_policy_claims.png
+|       cases_by_county_pre_policy_reimbursements.png
+|       claims_by_date_cleaned_post_policy.png
+|       claims_by_date_cleaned_pre_policy.png
+|       claims_by_date_raw_post_policy.png
+|       claims_by_date_raw_pre_policy.png
+|       ECDF_cleaned_claims_pre_and_post.png
+|       ECDF_cleaned_reimbursements_pre_and_post.png
+|       post_policy_claims_cleaned_and_capped.png
+|       post_policy_reimbursements_cleaned_and_capped.png
+|       pre_policy_claims_cleaned_and_capped.png
+|       pre_policy_reimbursements_cleaned_and_capped.png
+|       RADD_logo.jpg
+|       reimbursements_by_date_cleaned_post_policy.png
+|       reimbursements_by_date_cleaned_pre_policy.png
+|       reimbursements_by_date_raw_post_policy.png
+|       reimbursements_by_date_raw_pre_policy.png
+|       time_based_count_and_total_USD_cleaned_data.png
+|       time_based_count_and_total_USD_raw_data.png
+|       
++---reports
+|       Summary Report.docx
+|       Summary Report.pdf
+|       
+\---scripts
+        claims_adj_amt.sql
+        date_temporal_patterns.sql
+        load_csv_to_mysql.py
+        monthly_trend_analysis.sql
+        move_files.py
+        reimbursement_benefit_amout.sql
+        time_based_comparisons.sql
+        
